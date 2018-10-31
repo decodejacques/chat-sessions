@@ -14,7 +14,7 @@ function generateRandomID() {
     return '' + Math.floor(Math.random() * 10000000)
 }
 
-app.post('/sendMsg', (req, res) => {
+app.post('/sendMsg', function(req, res) {
     let parsed = JSON.parse(req.body.toString());
     let sessionID = parsed.sessionID;
     let info = sessionInfo[sessionID];
@@ -28,10 +28,10 @@ app.post('/sendMsg', (req, res) => {
     }
 })
 
-app.get('/messages', (req, res) => {
+app.get('/messages', function(req, res) {
     res.send(JSON.stringify(serverState.msgs))
 })
-app.post('/login', (req, res) => {
+app.post('/login', function(req, res) {
     let body = req.body.toString();
     let parsed = JSON.parse(body);
     let usr = parsed.username;
